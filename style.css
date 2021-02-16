@@ -40,8 +40,8 @@ body{
 }
 .start-stop-btn button:hover{
     background: linear-gradient(30deg,#2f5fff,blueviolet);
-    transition: .3s !important;
+    transition: .3s;
 }
-#stop-btn{
+.d-none{
     display: none;
 }

@@ -14,23 +14,16 @@ startBtn.addEventListener('click', () => {
 
 const setTime = (unit, count) => {
     let limit;
-    const interval = setInterval(() => {
-        update();
-    }, count);
     const update = () => {
         unit.innerText++;
-        if (unit.innerText.length === 1) {
-            unit.innerText = '0' + unit.innerText;
-        }
-        if (unit.innerText === limit) {
-            unit.innerText = '00';
-        }
+        unit.innerText.length === 1 && (unit.innerText = '0' + unit.innerText);
+        unit.innerText === limit && (unit.innerText = '00');
     }
+    const interval = setInterval(update, count);
     unit === seconds || minutes ? limit = '60' : unit === mileSeconds ? limit = '100' : limit = '24';
     stopBtn.addEventListener('click', () => clearInterval(interval));
 }
 
 const toggleBtn = () => {
-    startBtn.classList.toggle('d-none');
-    stopBtn.classList.toggle('d-none');
+    startBtn.classList.toggle('d-none') != stopBtn.classList.toggle('d-none');
 }

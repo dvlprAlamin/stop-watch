@@ -15,21 +15,21 @@ startBtn.addEventListener('click', () => {
 
 const setTime = (unit, count) => {
     let limit;
-    const update = () => {
+    const interval = setInterval(() => {
         unit.innerText++;
         unit.innerText.length === 1 && (unit.innerText = '0' + unit.innerText);
-        unit.innerText === limit && (unit.innerText = '00');
-    }
-    const interval = setInterval(update, count);
+        unit.innerText === limit && (unit.innerText = '00')
+    }, count);
     unit === seconds || minutes ? limit = '60' : unit === mileSeconds ? limit = '100' : limit = '24';
     stopBtn.addEventListener('click', () => clearInterval(interval));
-}
+    resetBtn.addEventListener('click', () => {
+        mileSeconds.innerText = '00';
+        seconds.innerText = '00';
+        minutes.innerText = '00';
+        hours.innerText = '00';
+        stopBtn.className === '' && stopBtn.click();
+    });
+};
 
 const toggleBtn = () => startBtn.classList.toggle('d-none') != stopBtn.classList.toggle('d-none');
 
-const resetWatch = () => {
-    mileSeconds.innerText = '00'
-    seconds.innerText = '00'
-    minutes.innerText = '00'
-    hours.innerText = '00'
-}

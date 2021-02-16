@@ -34,7 +34,9 @@ body{
     outline: 0;
     background: linear-gradient(30deg,blueviolet,#2f5fff);
     color: #ffffff;
-    padding: .8rem 2rem;
+    width: 8rem;
+    height: 3rem;
+    margin: 0 .5rem;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -44,4 +46,13 @@ body{
 }
 .d-none{
     display: none;
+}
+
+@media (max-width:550px){
+    #watch{
+        width:300px;
+    }
+    #watch h1{
+        font-size:50px;
+    }
 }

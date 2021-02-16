@@ -4,6 +4,7 @@ const seconds = document.getElementById('seconds');
 const mileSeconds = document.getElementById('mile-seconds');
 const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
+const resetBtn = document.getElementById('reset-btn');
 
 startBtn.addEventListener('click', () => {
     setTime(mileSeconds, 1);
@@ -24,6 +25,11 @@ const setTime = (unit, count) => {
     stopBtn.addEventListener('click', () => clearInterval(interval));
 }
 
-const toggleBtn = () => {
-    startBtn.classList.toggle('d-none') != stopBtn.classList.toggle('d-none');
+const toggleBtn = () => startBtn.classList.toggle('d-none') != stopBtn.classList.toggle('d-none');
+
+const resetWatch = () => {
+    mileSeconds.innerText = '00'
+    seconds.innerText = '00'
+    minutes.innerText = '00'
+    hours.innerText = '00'
 }

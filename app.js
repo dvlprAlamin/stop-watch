@@ -7,19 +7,20 @@ const stopBtn = document.getElementById('stop-btn');
 const resetBtn = document.getElementById('reset-btn');
 
 
+const isTwoDigit = unit => unit.innerText.length === 1 && (unit.innerText = '0' + unit.innerText);
+const resetUnit = (unit,limit) => unit.innerText > limit && (unit.innerText = '00') && unit.previousElementSibling.innerText++;
+
 
 startBtn.addEventListener('click', () => {
     const interval = setInterval(() => {
         centiSeconds.innerText++;
-        
-        centiSeconds.innerText > 99 && (centiSeconds.innerText = '00') && seconds.innerText++;
-        seconds.innerText > 59 && (seconds.innerText = '00') && minutes.innerText++;
-        minutes.innerText > 59 && (minutes.innerText = '00') && hours.innerText++;
-
-        centiSeconds.innerText.length === 1 && (centiSeconds.innerText = '0' + centiSeconds.innerText);
-        seconds.innerText.length === 1 && (seconds.innerText = '0' + seconds.innerText);
-        minutes.innerText.length === 1 && (minutes.innerText = '0' + minutes.innerText);
-        hours.innerText.length === 1 && (hours.innerText = '0' + hours.innerText);
+        resetUnit(centiSeconds,99)
+        resetUnit(seconds,59)
+        resetUnit(minutes,59)
+        isTwoDigit(centiSeconds);
+        isTwoDigit(seconds);
+        isTwoDigit(minutes);
+        isTwoDigit(hours);
     }, 10);
     
     stopBtn.addEventListener('click', () => clearInterval(interval));
@@ -67,5 +68,5 @@ startBtn.addEventListener('click', () => {
 //     });
 // };
 
-const toggleBtn = () => startBtn.classList.toggle('d-none') != stopBtn.classList.toggle('d-none');
+const toggleBtn = () => startBtn.classList.toggle('d-none') !== stopBtn.classList.toggle('d-none');
 

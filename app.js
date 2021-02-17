@@ -24,16 +24,11 @@ startBtn.addEventListener('click', () => {
     }, 10);
     
     stopBtn.addEventListener('click', () => clearInterval(interval));
-
-    resetBtn.addEventListener('click', () => {
-        centiSeconds.innerText = '00';
-        seconds.innerText = '00';
-        minutes.innerText = '00';
-        hours.innerText = '00';
-        stopBtn.className === '' && stopBtn.click();
-    });
 })
-
+const resetAll = () => {
+    centiSeconds.innerText = seconds.innerText = minutes.innerText = hours.innerText = '00';
+    stopBtn.className === '' && stopBtn.click();
+}
 
 
 
